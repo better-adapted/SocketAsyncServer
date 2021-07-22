@@ -48,11 +48,14 @@ namespace SocketAsyncServer
             String received = this.sb.ToString();
 
             //TODO Use message received to perform a specific operation.
+
+            // this is where the client data arrives
             String Temp = received;
             Temp = Temp.Replace("\r", "<CR>");
             Temp = Temp.Replace("\n", "<LF>");
             Console.WriteLine("Received: \"{0}\". The server has read {1} bytes.", Temp, received.Length);
 
+            // this is where it echos data back!
             Byte[] sendBuffer = Encoding.ASCII.GetBytes(received);
             args.SetBuffer(sendBuffer, 0, sendBuffer.Length);
 
